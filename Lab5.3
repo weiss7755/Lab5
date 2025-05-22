@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+
+class Student : IComparable<Student>
+{
+    public string Name { get; set; }
+    public int Grade { get; set; }
+
+    public int CompareTo(Student other)
+    {
+        return this.Grade.CompareTo(other.Grade); // Сортування за зростанням оцінки
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        List<Student> students = new List<Student>
+        {
+            new Student { Name = "Olena", Grade = 85 },
+            new Student { Name = "Maksym", Grade = 92 },
+            new Student { Name = "Yulia", Grade = 78 }
+        };
+
+        students.Sort();
+
+        foreach (var student in students)
+        {
+            Console.WriteLine($"{student.Name}, Оцінка: {student.Grade}");
+        }
+    }
+}
